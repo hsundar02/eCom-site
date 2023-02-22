@@ -160,8 +160,8 @@
             </div>
         </div>
     </div>
-
-    <div class="productlist">
+    <div class="row" id="productData"></div>
+    <!-- <div class="productlist">
         <div class="container">
             <div class="row">
                 <div class="heading text-center">
@@ -223,7 +223,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> -->
 
     <div class="interiors">
         <div class="container">
@@ -348,7 +348,79 @@
             </div>
         </div>
 
-        <script></script>
+        <script>
+            var obj = [{
+                id: 1,
+                image: "bluesofa.jpg",
+                productname: "BLUESOFA",
+                price: "$5.99",
+            }, {
+                id: 2,
+                image: "blackchair.jpg",
+                productname: "BLACKCHAIR",
+                price: "$5.99",
+            }, {
+                id: 3,
+                image: "storagetable.jpg",
+                productname: "STORAGETABLE",
+                price: "$5.99",
+            }, {
+                id: 4,
+                image: "chair.jpg",
+                productname: "CHAIR",
+                price: "$5.99",
+            }, {
+                id: 5,
+                image: "sofa.jpg",
+                productname: "SOFA",
+                price: "$5.99",
+            }, {
+                id: 6,
+                image: "craddle.jpg",
+                productname: "CRADDLE",
+                price: "$5.99",
+            }, ]
+            let productshow = document.getElementById("productData");
+
+            function showdata(data) {
+                data.forEach(function(elm, i, arr) {
+
+                    let colm1 = document.createElement("div");
+                    let colm2 = document.createElement("div");
+                    let proimg = document.createElement("img");
+                    let colm3 = document.createElement("div");
+                    let txth5 = document.createElement("h5");
+                    let txtp = document.createElement("p");
+
+                    colm1.setAttribute("class", "col-4");
+                    colm2.setAttribute("class", "product1");
+                    proimg.setAttribute("src", "img/" + elm.image);
+                    colm3.setAttribute("class", "protext");
+
+
+                    colm3.append(txth5, txtp);
+                    colm2.append(proimg, colm3);
+                    colm1.append(colm2);
+                    productshow.append(colm1);
+
+                    txth5.innerText = elm.productname;
+                    txtp.innerText = elm.price;
+                });
+            }
+
+            showdata(obj)
+            console.log(obj)
+
+            // <div class="col-4">
+            //         <div class="product1">
+            //             <img src="./img/blackchair.jpg" />
+            //             <div class="protext">
+            //                 <h5>BLACKCHAIR</h5>
+            //                 <p>Price: $5.99</p>
+            //             </div>
+            //         </div>
+            //     </div>
+        </script>
 </body>
 
 </html>
