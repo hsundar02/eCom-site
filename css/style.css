@@ -239,6 +239,11 @@ a {
 .interior1 {
     padding: 10px;
     position: relative;
+    overflow: hidden;
+}
+
+.interior1:hover .int {
+    transform: scale(1.5);
 }
 
 .interior1 img {
@@ -256,7 +261,6 @@ a {
 
 .intext h5 {
     text-align: center;
-    background-color: #717171;
     border: 1px solid black;
     border-radius: 10px;
     width: 145px;
