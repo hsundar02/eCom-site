@@ -380,22 +380,22 @@
                 productname: "CRADDLE ",
                 price: "$5.99 ",
             }, ]
-            let productshow = document.getElementById("productData ");
+            let productshow = document.getElementById("productData");
 
             function showdata(data) {
                 data.forEach(function(elm, i, arr) {
 
-                    let colm1 = document.createElement("div ");
-                    let colm2 = document.createElement("div ");
-                    let proimg = document.createElement("img ");
-                    let colm3 = document.createElement("div ");
-                    let txth5 = document.createElement("h5 ");
-                    let txtp = document.createElement("p ");
+                    let colm1 = document.createElement("div");
+                    let colm2 = document.createElement("div");
+                    let proimg = document.createElement("img");
+                    let colm3 = document.createElement("div");
+                    let txth5 = document.createElement("h5");
+                    let txtp = document.createElement("p");
 
-                    colm1.setAttribute("class ", "col-4 ");
-                    colm2.setAttribute("class ", "product1 ");
-                    proimg.setAttribute("src ", "img/ " + elm.image);
-                    colm3.setAttribute("class ", "protext ");
+                    colm1.setAttribute("class", "col-4");
+                    colm2.setAttribute("class", "product1 ");
+                    proimg.setAttribute("src", "img/" + elm.image);
+                    colm3.setAttribute("class", "protext");
 
 
                     colm3.append(txth5, txtp);
