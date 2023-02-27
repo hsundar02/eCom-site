@@ -78,30 +78,34 @@
                                 </li>
                             </ul>
                             <div class="col-md-3 col-xs-4 text-right hidden-xs menu-2">
-                                <ul>
-                                    <li class="search">
-                                        <div class="input-group">
-                                            <input type="text" placeholder="Search.." />
-                                            <span class="input-group-btn">
-                          <button class="btn btn-primary" type="button">
-                            <i class="icon-search"></i>
-                          </button>
-                        </span>
+                                <button class="btn " type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight"><i class="fa fa-shopping-cart" aria-hidden="true"></i></button>
+
+                                <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
+                                    <div class="offcanvas-header">
+                                        <h5 id="offcanvasRightLabel">Offcanvas right</h5>
+                                        <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                                    </div>
+                                    <div class="offcanvas-body">
+                                        <div class="row" id="ofcanvas">
+                                            <!-- <div class="cartlist">
+                                                <div class="image">
+                                                    <img src="./img/bluesofa.jpg" />
+                                                </div>
+                                                <div class="producttxt">
+                                                    <h4>BLUE-SOFA</h4>
+                                                    <h5>Price</h5>
+                                                    <p>Quantity</p>
+                                                </div>
+                                            </div> -->
+                                            <!-- <ul>
+                                    <li><button class="shopping-cart" id="cart"><i class="fa fa-shopping-cart" aria-hidden="true"></i></button></li>
+                                </ul> -->
                                         </div>
-                                    </li>
-                                    <li class="shopping-cart">
-                                        <a href="#" class="cart"><span
-                          ><small>0</small
-                          ><i class="icon-shopping-cart"></i></span
-                      ></a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
+                                    </div>
                     </nav>
-                </div>
-            </div>
-        </div>
+                    </div>
+                    </div>
+                    </div>
     </header>
 
     <div class="container-fluid">
@@ -109,7 +113,7 @@
             <div class="backimg">
                 <div class="backtxt">
                     <h1>WoodShop Welcomes U</h1>
-                    <p>Anithu vidhamana bedu chairgal enghu kedaikum</p>
+                    <p>Section 1.10.32 of "de Finibus Bonorum et Malorum", written by Cicero in 45 BC</p>
                 </div>
             </div>
         </div>
@@ -192,6 +196,7 @@
                     <div class="protext">
                         <h5>STORAGETABLE</h5>
                         <p>Price: $5.99</p>
+                        <button class="addbtn">AddToCart</button>
                     </div>
                 </div>
             </div>
@@ -349,69 +354,8 @@
             </div>
         </div>
 
-        <script>
-            var obj = [{
-                id: 1,
-                image: "bluesofa.jpg ",
-                productname: "BLUESOFA ",
-                price: "$5.99 ",
-            }, {
-                id: 2,
-                image: "blackchair.jpg ",
-                productname: "BLACKCHAIR ",
-                price: "$5.99 ",
-            }, {
-                id: 3,
-                image: "storagetable.jpg ",
-                productname: "STORAGETABLE ",
-                price: "$5.99 ",
-            }, {
-                id: 4,
-                image: "chair.jpg ",
-                productname: "CHAIR ",
-                price: "$5.99 ",
-            }, {
-                id: 5,
-                image: "sofa.jpg ",
-                productname: "SOFA ",
-                price: "$5.99 ",
-            }, {
-                id: 6,
-                image: "craddle.jpg ",
-                productname: "CRADDLE ",
-                price: "$5.99 ",
-            }, ]
-            let productshow = document.getElementById("productData");
-
-            function showdata(data) {
-                data.forEach(function(elm, i, arr) {
-
-                    let colm1 = document.createElement("div");
-                    let colm2 = document.createElement("div");
-                    let proimg = document.createElement("img");
-                    let colm3 = document.createElement("div");
-                    let txth5 = document.createElement("h5");
-                    let txtp = document.createElement("p");
-
-                    colm1.setAttribute("class", "col-4");
-                    colm2.setAttribute("class", "product1 ");
-                    proimg.setAttribute("src", "img/" + elm.image);
-                    colm3.setAttribute("class", "protext");
-
-
-                    colm3.append(txth5, txtp);
-                    colm2.append(proimg, colm3);
-                    colm1.append(colm2);
-                    productshow.append(colm1);
-
-                    txth5.innerText = elm.productname;
-                    txtp.innerText = elm.price;
-                });
-            }
-
-            showdata(obj)
-            console.log(obj)
-        </script>
+        <script src="./js/script.js"></script>
+        <script src="./js/bootstrap.bundle.min.js"></script>
 </body>
 
 </html>
