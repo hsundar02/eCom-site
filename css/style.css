@@ -187,7 +187,7 @@ h5 {
 }
 
 .productlist {
-    background-color: cornsilk;
+    background-color: lightskyblue;
     margin-bottom: 20px;
 }
 
@@ -211,6 +211,10 @@ h5 {
 .product1 img {
     height: auto;
     width: 100%;
+}
+
+.interiors {
+    background-color: rgb(174, 171, 171);
 }
 
 .product1:hover .protext {
