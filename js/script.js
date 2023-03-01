@@ -199,12 +199,19 @@ function deletecartItems(id) {
 
 function totalPrice(carItem) {
     let showtotal = document.getElementById("totalPrice");
+    showtotal.innerText = "";
+
     total = 0;
 
     for (let i = 0; i <= carItem.length; i++) {
-        total += (carItem[i].price * carItem[i].quantity);
-        console.log(total);
-        showtotal.innerText = "Total Price:" + total;
+        if (carItem.quantity != 0) {
+            total += (carItem[i].price * carItem[i].quantity);
+            console.log(total);
+            showtotal.innerText = "Total Price:" + total;
+        } else {
+            // ""
+            return showtotal = "TOTAL PRICE" + total;
+        }
     }
 }
 totalPrice(carItem)
