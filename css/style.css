@@ -161,6 +161,20 @@ a {
     margin: 3px 0;
 }
 
+.producttxt {
+    padding: 10px 12px;
+}
+
+.producttxt h3,
+h4,
+h5 {
+    font-size: 16px;
+}
+
+.producttxt .plusBtn {
+    margin-right: 5px;
+}
+
 .backimg {
     background-image: url("../img/background.jpg");
     height: 700px;

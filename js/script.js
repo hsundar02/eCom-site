@@ -30,11 +30,12 @@ var obj = [{
     price: "3500 ",
 }, ]
 let productshow = document.getElementById("productData");
+let cartist = [];
 
 function showdata(data) {
     productshow.innerHTML = "";
-    data.forEach(function(elm, i, arr) {
 
+    data.forEach(function(elm, i, arr) {
         let colm1 = document.createElement("div");
         let colm2 = document.createElement("div");
         let proimg = document.createElement("img");
@@ -49,7 +50,6 @@ function showdata(data) {
         colm3.setAttribute("class", "protext");
         adbtn.setAttribute("class", "addbtn");
 
-
         adbtn.innerText = "Add To Cart";
 
         colm3.append(txth5, txtp, adbtn);
@@ -60,7 +60,7 @@ function showdata(data) {
         txth5.innerText = elm.productname;
         txtp.innerText = elm.price;
 
-        adbtn.onclick = addCartItem.bind(null, elm.id);
+        adbtn.onclick = addCarItem.bind(null, elm.id);
 
     });
 }
@@ -82,6 +82,8 @@ function updatecart(data) {
         let textp = document.createElement("p");
         let minbtn = document.createElement("button");
         let plubtn = document.createElement("button");
+        let qty = document.createElement("h3");
+        let delbtn = document.createElement("button")
 
 
         colmn1.setAttribute("class", "cartlist");
@@ -90,33 +92,42 @@ function updatecart(data) {
         colmn3.setAttribute("class", "producttxt");
         minbtn.setAttribute("class", "minusBtn");
         plubtn.setAttribute("class", "plusBtn");
+        delbtn.setAttribute("class", "btn btn-danger")
 
-
-        texth4.innerText = elm.productname;
-        texth5.innerText = elm.price;
-        minbtn.innerText = "- ";
-        plubtn.innerText = "+";
-
-        colmn3.append(texth4, texth5, textp, minbtn, plubtn);
+        texth4.innerText = "Product Name :" + elm.productname;
+        texth5.innerText = "Product Price :" + elm.price;
+        minbtn.innerText = " - ";
+        plubtn.innerText = " + ";
+        qty.innerText = ("Product Quantity :" + elm.quantity);
+        delbtn.innerText = "Delete";
+        colmn3.append(texth4, texth5, textp, qty, minbtn, plubtn, delbtn);
         colmn2.append(prodimg);
         colmn1.append(colmn2, colmn3);
         cartlist1.append(colmn1);
 
+        plubtn.onclick = addCarItem.bind(null, elm.id);
+        minbtn.onclick = decrementcartitem.bind(null, elm.id);
+        delbtn.onclick = deletecartItems.bind(null, elm.id);
+        // plubtn.addEventListener("click", addkartbtn)
 
+        // function addkartbtn() {
+        //     alert("click");
+        // }
     });
 
 }
 
-cartItem = []
+carItem = []
 let linkidicon = document.getElementById("addbtn");
 
-function addCartItem(id) {
+function addCarItem(id) {
 
-    let findData = cartItem.find(function(item) {
+    let findData = carItem.find(function(item) {
         return item.id === id;
     })
     if (findData) {
-        cartItem.map(function(item) {
+
+        let updatecartlist = carItem.map(function(item) {
             if (item.id === id) {
                 item.quantity += 1;
                 return item;
@@ -124,15 +135,76 @@ function addCartItem(id) {
             } else
                 return item;
         })
-        console.log(cartItem);
+        carItem = updatecartlist;
+        totalPrice(carItem);
+        updatecart(carItem);
+        console.log(carItem);
     } else {
         let newItemCart = obj.find(function(item) {
             return item.id === id;
 
         })
         newItemCart.quantity = 1;
-        cartItem.push(newItemCart);
-        console.log(cartItem);
-        updatecart(cartItem);
+        carItem.push(newItemCart);
+        console.log(carItem);
+        updatecart(carItem);
+        totalPrice(carItem);
     }
 }
+
+
+
+function decrementcartitem(id) {
+    let finddata = carItem.find(function(item) {
+        return item.id === id;
+    })
+    if (finddata) {
+        if (finddata.quantity === 1) {
+            let updatecartlist = carItem.filter(function(item) {
+                return item.id !== id;
+            });
+            carItem = updatecartlist;
+            updatecart(carItem);
+            totalPrice(carItem);
+
+        } else {
+            let updatecartlist = carItem.map(function(item) {
+
+                if (item.id === id) {
+                    item.quantity -= 1;
+                    return item;
+                } else return item;
+            })
+            console.log(carItem);
+            carItem = updatecartlist;
+            totalPrice(carItem);
+            updatecart(carItem);
+        }
+    }
+}
+
+function deletecartItems(id) {
+    let finddata = carItem.find(function(item) {
+        return item.id == id;
+    })
+    if (finddata) {
+        let updateitem = carItem.filter(function(item) {
+            return item.id !== id;
+        });
+        carItem = updateitem
+        updatecart(carItem);
+        totalPrice(carItem);
+    }
+}
+
+function totalPrice(carItem) {
+    let showtotal = document.getElementById("totalPrice");
+    total = 0;
+
+    for (let i = 0; i <= carItem.length; i++) {
+        total += (carItem[i].price * carItem[i].quantity);
+        console.log(total);
+        showtotal.innerText = "Total Price:" + total;
+    }
+}
+totalPrice(carItem)
